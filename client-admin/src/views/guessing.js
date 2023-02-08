@@ -1,17 +1,17 @@
-import Menu from "../components/menuRow";
+import Menu from "../components/guessingRow";
 import ItemModal from "../components/ItemModal"
 import Table from "react-bootstrap/Table";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchItem } from "../store/actions/itemActionCreator";
-
 export default function MenuPage() {
 
   const item = useSelector((state) => {
     console.log(state, "ini state 2")
-    // console.log(state.item.item.data, "INI STATEEEEEE")
-    const itemState = state.item.item
-    return itemState
+    const questionState = state.item.item;
+    const newState = questionState.filter(el => el.CategoryId === 2)
+    console.log(newState, "includessssssssssssssssssss")
+    return newState;
   })
 
   const dispatch = useDispatch()
@@ -33,8 +33,14 @@ export default function MenuPage() {
         <tr>
           <th>No</th>
           <th>Image Question</th>
+          <th>Question</th>
           <th>Answer</th>
+          <th>option A</th>
+          <th>option B</th>
+          <th>option C</th>
+          <th>option D</th>
           <th>Level</th>
+          <th>Action</th>
         </tr>
       </thead>
       <tbody>

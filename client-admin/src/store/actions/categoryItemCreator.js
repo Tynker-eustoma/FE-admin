@@ -1,7 +1,7 @@
 import { DELETE_CATEGORY, FETCH_CATEGORY } from "./actionType"
 
 // const url = "http://localhost:3000"
-const url = "https://p3-challenge1.melissa-portofolio.site"
+const url = "http://13.231.227.15:3000"
 
 export const fetchCategorySuccess = (payload) => {
   // console.log(payload, "ini payloadddd fetch item success")

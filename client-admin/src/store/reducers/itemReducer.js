@@ -1,6 +1,6 @@
 const item = {
   item: [
-      {name: "aa", price: 2, imgUrl: "aa", User: {username: "a"}, Category: {name: "a"}, Ingredients: [{name: 'a'}, {name: 'b'}, {name: 'c'}] }
+      {imgUrl: "aa", answer: "", optionA: "aa", optionB: "b", optionC: "c", optionD:  'a', lvl: 1, question: 'd', CategoryId: 1 }
   ]
 }
 

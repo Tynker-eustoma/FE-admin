@@ -1,9 +1,10 @@
 import { FETCH_ITEM } from "./actionType";
 // const url = "http://localhost:3000"
-const url = "https://p3-challenge1.melissa-portofolio.site"
+// const url = "http://13.231.227.15:3000/users/games"
+const url = 'http://localhost:3000/users/games'
 
 export const fetchItemSuccess = (payload) => {
-  // console.log(payload, "ini payloadddd fetch item success")
+  console.log(payload, "ini payloadddd fetch item success")
   return {
     type: FETCH_ITEM,
     payload
@@ -13,7 +14,7 @@ export const fetchItemSuccess = (payload) => {
 export const fetchItem = () => {
   // console.log("kepanggil");
   return(dispatch) => {
-    fetch(url + '/items', {
+    fetch(url, {
       headers: {
         'Content-Type': 'application/json',
         access_token: localStorage.access_token
@@ -26,8 +27,8 @@ export const fetchItem = () => {
 
 export const AddItem = (itemForm) => {
   return (dispatch) => {
-    console.log('kepamggil')
-    fetch(url + '/items', {
+    console.log(itemForm, "form action creator")
+    fetch(url, {
       method: 'POST',
       body: JSON.stringify(itemForm),
       headers: {
@@ -37,6 +38,7 @@ export const AddItem = (itemForm) => {
     })
       .then((response) => response.json())
       .then((data) => {
+        console.log('succes add')
         dispatch(fetchItem())
       })
       .catch((error) => {
@@ -66,7 +68,7 @@ export const editItem = (itemForm, id) => {
 
 export const deleteItems = (id) => {
   return(dispatch) => {
-    fetch(url + '/items/' + id, {
+    fetch(url + '/' + Number(id), {
       method: "DELETE", 
       headers: {
         'Content-Type': 'application/json',

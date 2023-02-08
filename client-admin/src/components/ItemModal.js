@@ -15,14 +15,15 @@ export default function ModalItem(props) {
 
   console.log(props, "propssssssssssssssssss")
   const [itemForm, setItemForm] = useState({
-    name: props.menu? props.menu.name : "",
-    description: props.menu? props.menu.description : "",
-    price:props.menu? props.menu.price : "",
-    imgUrl: props.menu? props.menu.imgUrl : "",
-    categoryId: props.menu? props.menu.Category.id : "",
-    ingredient1: props.menu? props.menu.Ingredients[0].name : "",
-    ingredient2: props.menu? props.menu.Ingredients[1].name : "",
-    ingredient3: props.menu? props.menu.Ingredients[2].name : ""
+    imgUrl: "",
+    answer: "",
+    optionA: "",
+    optionB: "",
+    optionC: "",
+    optionD: "",
+    lvl: "",
+    question: "",
+    CategoryId: ""
   })
 
   const changeHandler = (e) => {
@@ -39,7 +40,7 @@ export default function ModalItem(props) {
     console.log(itemForm, "INI FORM YG UDH DI SUBMIT GAES")
     e.preventDefault();
     if(props.menu){
-      dispatch(editItem(itemForm, props.menu.id))
+      // dispatch(editItem(itemForm, props.menu.id))
     } else {
       dispatch(AddItem(itemForm))
     }
@@ -49,22 +50,21 @@ export default function ModalItem(props) {
   return (
     <>
       <Button variant="primary" onClick={handleShow}>
-       {props.menu? "Edit Menu" : "Add New Menu"}
+       {props.menu? "Edit Question" : "Add New Question"}
       </Button>
       <Modal show={show} onHide={handleClose}>
         <Modal.Header closeButton>
-          <Modal.Title>{props.menu? "Edit Menu" : "Add New Menu"}</Modal.Title>
+          <Modal.Title>{props.menu? "Edit Question" : "Add New Question"}</Modal.Title>
         </Modal.Header>
         <Modal.Body>
           <Form onSubmit={submitHandler}>
             <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
-              <Form.Label>Name</Form.Label>
+              <Form.Label>image Url</Form.Label>
               <Form.Control
                 onChange={changeHandler}
-                defaultValue={props.menu? props.menu.name : itemForm.name}
-                name="name"
+                name="imgUrl"
                 type="text"
-                placeholder="Pasta Carbonara"
+                placeholder=""
                 autoFocus
               />
             </Form.Group>
@@ -72,78 +72,83 @@ export default function ModalItem(props) {
               className="mb-3"
               controlId="exampleForm.ControlTextarea1"
             >
-              <Form.Label>Description</Form.Label>
+              <Form.Label>Answer</Form.Label>
               <Form.Control as="textarea" rows={3}
               onChange={changeHandler}
               defaultValue={props.menu? props.menu.description : itemForm.description}
-              name="description"
+              name="answer"
               />
             </Form.Group>
             <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
-              <Form.Label>Price</Form.Label>
+              <Form.Label>optionA</Form.Label>
               <Form.Control
-                type="Number"
+                type="textr"
                 onChange={changeHandler}
-                defaultValue={props.menu? props.menu.price : itemForm.price}
-                name="price"
-                placeholder="Pasta Carbonara"
+                name="optionA"
+                placeholder=""
                 autoFocus
               />
             </Form.Group>
             <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
-              <Form.Label>Image Url</Form.Label>
+              <Form.Label>option B</Form.Label>
               <Form.Control
               onChange={changeHandler}
-              defaultValue={props.menu? props.menu.imgUrl: itemForm.imgUrl}
-              name="imgUrl"
+              name="optionB"
                 type="text"
-                placeholder="Pasta Carbonara"
+                placeholder=""
                 autoFocus
               />
             </Form.Group>
+            <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
+              <Form.Label>option C</Form.Label>
+              <Form.Control
+              onChange={changeHandler}
+              name="optionC"
+                type="text"
+                placeholder=""
+                autoFocus
+              />
+            </Form.Group>
+            <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
+              <Form.Label>Option D</Form.Label>
+              <Form.Control
+              onChange={changeHandler}
+              name="optionD"
+                type="text"
+                placeholder=""
+                autoFocus
+              />
+            </Form.Group>
+            <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
+              <Form.Label>Level</Form.Label>
+              <Form.Control
+              onChange={changeHandler}
+              name="lvl"
+                type="number"
+                placeholder=""
+                autoFocus
+              />
+            </Form.Group>
+            <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
+              <Form.Label>Question</Form.Label>
+              <Form.Control
+              onChange={changeHandler}
+              name="question"
+                type="text"
+                placeholder=""
+                autoFocus
+              />
+            </Form.Group>
+
             <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
               <Form.Label>Category</Form.Label>
               <Form.Select onChange={changeHandler}
-              name="categoryId" aria-label="Default select example">
-                <option>Open this select menu</option>
-                <option value="1">Breakfast</option>
-                <option value="2">Main Course</option>
-                <option value="3">Drinks</option>
-                <option value="4">Dessert</option>
+              name="CategoryId" aria-label="Default select example">
+                <option>Open this select Game mode</option>
+                <option value="1">Counting</option>
+                <option value="2">Guessing</option>
+                <option value="3">Learning</option>
               </Form.Select>
-            </Form.Group>
-            <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
-              <Form.Label>Ingredient 1</Form.Label>
-              <Form.Control
-              onChange={changeHandler}
-              defaultValue={props.menu? props.menu.Ingredients[0].name : itemForm.ingredient1}
-              name="ingredient1"
-                type="text"
-                placeholder="Tomato"
-                autoFocus
-              />
-            </Form.Group>
-            <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
-              <Form.Label>Ingredient 2</Form.Label>
-              <Form.Control
-              onChange={changeHandler}
-              defaultValue={props.menu? props.menu.Ingredients[1].name : itemForm.ingredient2}
-              name="ingredient2"
-                type="text"
-                placeholder="Tomato"
-                autoFocus
-              />
-            </Form.Group>
-            <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
-              <Form.Label>Ingredient 3</Form.Label>
-              <Form.Control
-              onChange={changeHandler}
-              defaultValue={props.menu? props.menu.Ingredients[2].name : itemForm.ingredient3}
-              name="ingredient3"
-                type="text"
-                placeholder="Tomato"
-                autoFocus
-              />
             </Form.Group>
             
             <div className="text-center">

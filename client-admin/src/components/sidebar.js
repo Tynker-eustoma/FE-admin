@@ -14,16 +14,10 @@ export default function Sidebar(){
   <nav class="main-menu">
     <ul>
     <li class="has-subnav">
-        <Link to="/">
-          <i className="fa fa-bowl-food fa-2x"></i>
-          <span class="nav-text">
-            Dashboard
-          </span>
-        </Link>
 
       </li>
       <li class="has-subnav">
-        <Link to="/counting">
+        <Link to="/">
           <i className="fa fa-bowl-food fa-2x"></i>
           <span class="nav-text">
             Counting

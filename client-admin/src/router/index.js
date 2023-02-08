@@ -1,5 +1,5 @@
 import { createBrowserRouter, redirect } from "react-router-dom";
-import Menu from "../views/menu";
+import Menu from "../views/guessing";
 import Login from "../views/login";
 import Layout from "../views/layout";
 import Counting from "../views/counting";
@@ -18,10 +18,6 @@ const router = createBrowserRouter([
     children: [
       {
         path: "",
-        element: <Dashboard />,
-      },
-      {
-        path: "counting",
         element: <Counting />,
       },
       {

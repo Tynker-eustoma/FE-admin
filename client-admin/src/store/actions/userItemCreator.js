@@ -1,9 +1,10 @@
 
 import { LOGIN } from "./actionType"
-const url = "https://p3-challenge1.melissa-portofolio.site"
+const url = "http://13.231.227.15:3000"
 // const url = "http://localhost:3000"
 
 export const loginUser = (itemForm) => {
+  console.log("kepanggil item creatornya")
   return fetch(url + '/users/login', {
       method: 'POST',
       body: JSON.stringify(itemForm),
@@ -13,7 +14,7 @@ export const loginUser = (itemForm) => {
     })
       .then((response) => response.json())
       .then((data) => {
-        console.log(data)
+        console.log("berhasil login")
         localStorage.access_token = data.access_token
         localStorage.username = data.username
       })

@@ -1,4 +1,4 @@
-import Menu from "../components/learningRow";
+import Learning from "../components/learningRow";
 import ItemModal from "../components/ItemModal"
 import Table from "react-bootstrap/Table";
 import { useEffect } from "react";
@@ -7,37 +7,40 @@ import { fetchItem } from "../store/actions/itemActionCreator";
 
 export default function MenuPage() {
 
-  // const item = useSelector((state) => {
-  //   console.log(state, "ini state 2")
-  //   // console.log(state.item.item.data, "INI STATEEEEEE")
-  //   const itemState = state.item.item
-  //   return itemState
-  // })
+  const question = useSelector((state) => {
+    // console.log(state, "INI STATEEEEEE");
+    const questionState = state.item.item;
+    const newState = questionState.filter(el => el.CategoryId === 1)
+    console.log(newState, "includessssssssssssssssssss")
+    return newState;
+  });
 
-  // const dispatch = useDispatch()
+  const dispatch = useDispatch();
 
-  // useEffect(() => {
-  //   console.log('use effect')
-  //   dispatch(fetchItem())
-  // }, [])
-
-  // console.log("test")
+  useEffect(() => {
+    console.log("use effect jalan");
+    dispatch(fetchItem());
+  }, []);
 
   return (
     <body>
       <div className="container">
-        <h1>Guessing Game Mode List Question</h1>
+        <h1>Learning Game Mode List Question</h1>
       <ItemModal/>
       <Table bordered hover size="sm" style={{marginTop: "20px"}}>
       <thead>
         <tr>
           <th>No</th>
+          <th>Qestion</th>
           <th>Answer</th>
           <th>Level</th>
+          <th>Action</th>
         </tr>
       </thead>
       <tbody>
-          <Menu/>
+      {question.map((el, index) => (
+            <Learning el={el} index={index} key={el.id}/>
+          ))}
       </tbody>
     </Table>
       </div>
