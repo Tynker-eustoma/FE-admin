@@ -1,0 +1,6 @@
+export const LOGIN = "postLogin"
+export const FETCH_ITEM = "fetchItem"
+export const FETCH_CATEGORY = "fetchCategory"
+export const FETCH_INGREDIENTS = "fetchIngredients"
+export const FETCH_ITEM_DETAIL = "fetchItemDetail"
+export const DELETE_CATEGORY = "deleteCategory"

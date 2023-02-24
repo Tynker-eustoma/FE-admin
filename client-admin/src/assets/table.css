@@ -1,0 +1,13 @@
+.menu-item img {
+  width: 150px;
+  height: 150px;
+  object-fit: cover;
+  margin-right: 10px;
+  border-radius: 5px;
+  transform: scale(1.1);
+  transition: transform 0.2s ease-in-out;
+}
+
+.menu-item img:hover {
+  transform: scale(1);
+}
